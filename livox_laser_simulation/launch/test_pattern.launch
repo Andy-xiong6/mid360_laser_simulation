@@ -1,14 +1,12 @@
 <?xml version="1.0" ?>
 <launch>
-	<env name="LD_LIBRARY_PATH" value="$(optenv LD_LIBRARY_PATH):/home/xhw/limx_ws/devel/lib"/>
-
 	<!-- This is where we select the model file for the UAV-->
 	<!-- <arg name="UAV_model" value="$(find livox_laser_simulation)/models/sensors_only/model.sdf" /> -->
 	<arg name="wheel_biped" value="$(find livox_laser_simulation)/models/WF_TRON1A/urdf/robot.sdf" />
 	<!-- This is where we set the initial position of the UAV-->
 	<arg name="x" value="0" />
   	<arg name="y" value="0" />
-  	<arg name="z" value="1.5" />
+  	<arg name="z" value="0.82" />
 
 	<!-- This is where we select the world file-->
 	<arg name="world" default="$(find livox_laser_simulation)/worlds/office_small.world" />
