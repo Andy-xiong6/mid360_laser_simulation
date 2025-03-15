@@ -43,7 +43,7 @@
     </joint>
 
     <link name = "lidar_Link">
-      <pose>0.0 0.0 0.05 0.0 0.0 0.0</pose>
+      <pose>0.0 0.0 0.05 0.0 0.0 3.14159</pose>
       <inertial>
         <mass>0.1</mass>
         <inertia>
@@ -73,7 +73,7 @@
       </visual>
 
       <sensor type="ray" name="laser_livox">
-        <pose>0 0 0.05 0 0 0</pose>
+        <pose>0 0 0.05 0 0 3.14159</pose>
         <visualize>true</visualize>
         <always_on>True</always_on>
         <update_rate>10</update_rate>
@@ -112,6 +112,34 @@
           <publish_pointcloud_type>2</publish_pointcloud_type>
 		      <ros_topic>/livox/lidar</ros_topic>
           <frameName>base_link</frameName>
+        </plugin>
+      </sensor>
+      <sensor name="imu_sensor" type="imu">
+        <pose>0.011 0.02329 -0.04412 0 0 0</pose>
+        <always_on>1</always_on>
+        <update_rate>200</update_rate>
+        <imu>
+          <angular_velocity>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.002</stddev>
+            </noise>
+          </angular_velocity>
+          <linear_acceleration>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.002</stddev>
+            </noise>
+          </linear_acceleration>
+        </imu>
+        <plugin name="gazebo_ros_imu_sensor" filename="libgazebo_ros_imu_sensor.so">
+          <topicName>/livox/imu</topicName>
+          <bodyName>lidar_Link</bodyName>
+          <frameName>base_link</frameName>
+          <updateRateHZ>200</updateRateHZ>
+          <gaussianNoise>0.002</gaussianNoise>
         </plugin>
       </sensor>
 
